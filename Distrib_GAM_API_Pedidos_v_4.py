@@ -457,60 +457,65 @@ def GeraTokenGAM():
 
     return token, HoraToken
     
-# Define tempo entre uma consulta e outra 
-MinutosEspera = 20 # Informar em minutos
-TempoEspera = (60*MinutosEspera) # Converte para Segundos
+# # Define tempo entre uma consulta e outra 
+# MinutosEspera = 20 # Informar em minutos
+# TempoEspera = (60*MinutosEspera) # Converte para Segundos
 
-# Define tempo de validade do Tonken (em horas)
-HorasValidadeToken = 2 # Informar em Horas
-TempoValidadeToken = (60*HorasValidadeToken) # Converte para Minutos
-UltimoToken = None
-Token = None
-while True:
-    # Controle Tempo de Validade do token
-    if (Token == None):
-        Token, UltimoToken = GeraTokenGAM()
+# # Define tempo de validade do Tonken (em horas)
+# HorasValidadeToken = 2 # Informar em Horas
+# TempoValidadeToken = (60*HorasValidadeToken) # Converte para Minutos
+# UltimoToken = None
+# Token = None
+# while True:
+#     # Controle Tempo de Validade do token
+#     if (Token == None):
+#         Token, UltimoToken = GeraTokenGAM()
 
-    if Token != None:
-        HoraAtual = datetime.now()
-        print('Hora Token: ', UltimoToken, ' Tipo: ',type(UltimoToken))
-        print('Hora Atual: ', HoraAtual, ' Tipo: ',type(HoraAtual))
-        TempoToken = ((HoraAtual - UltimoToken).total_seconds()) / 60
-        print('Tempo uso do Token: ', TempoToken, ' minutos')
-        if TempoToken > TempoValidadeToken: #TempoValidadeToken:
-            print('Gerar novo Token')
-            Token = None
+#     if Token != None:
+#         HoraAtual = datetime.now()
+#         print('Hora Token: ', UltimoToken, ' Tipo: ',type(UltimoToken))
+#         print('Hora Atual: ', HoraAtual, ' Tipo: ',type(HoraAtual))
+#         TempoToken = ((HoraAtual - UltimoToken).total_seconds()) / 60
+#         print('Tempo uso do Token: ', TempoToken, ' minutos')
+#         if TempoToken > TempoValidadeToken: #TempoValidadeToken:
+#             print('Gerar novo Token')
+#             Token = None
     
 
-    # # Dados para acesso à API da GAM
-    # url = 'http://apitomcat.gam.com.br:8280/ApiPedidos/api/token/gerar'
-    # headers = {
-    #     'accept': '*/*',
-    #     'Content-Type': 'application/json',
-    # }
-    # json_data = {
-    #     'username': 'kolmo',
-    #     'password': 'uMolAUkW',
-    # }
-    # # Obtem Token para acesso
-    # response = requests.post(url, headers=headers, json=json_data)
+#     # # Dados para acesso à API da GAM
+#     # url = 'http://apitomcat.gam.com.br:8280/ApiPedidos/api/token/gerar'
+#     # headers = {
+#     #     'accept': '*/*',
+#     #     'Content-Type': 'application/json',
+#     # }
+#     # json_data = {
+#     #     'username': 'kolmo',
+#     #     'password': 'uMolAUkW',
+#     # }
+#     # # Obtem Token para acesso
+#     # response = requests.post(url, headers=headers, json=json_data)
 
-    # if response.status_code == 200:
-    if Token != None:
-        # data = response.json()
-        # token = data.get("token")
-        #print('Token: ', token)
-        # Incluir LOOP para verificar todas as empresas que possuem pedidos
+#     # if response.status_code == 200:
+#     if Token != None:
+#         # data = response.json()
+#         # token = data.get("token")
+#         #print('Token: ', token)
+#         # Incluir LOOP para verificar todas as empresas que possuem pedidos
 
-        for Empresa in range(6):
-            if Empresa >= 2 and Empresa <= 3:
-            #if Empresa >= 100: # EXCLUIR ********************************************************
-                IniciaBot_GAM_API_Pedidos(Empresa, Token)
+#         for Empresa in range(6):
+#             if Empresa >= 2 and Empresa <= 3:
+#             #if Empresa >= 100: # EXCLUIR ********************************************************
+#                 IniciaBot_GAM_API_Pedidos(Empresa, Token)
 
-        print('Última Consulta: ', datetime.now())
-        print('Aguardando: ', (TempoEspera/60), ' minutos')
-        time.sleep(TempoEspera)        
+#         print('Última Consulta: ', datetime.now())
+#         print('Aguardando: ', (TempoEspera/60), ' minutos')
+#         time.sleep(TempoEspera)        
 
-        print('==================================================================================================================')
-    break
+#         print('==================================================================================================================')
+#     break
 
+Token, UltimoToken = GeraTokenGAM()
+for Empresa in range(6):
+    if Empresa >= 2 and Empresa <= 3:
+        IniciaBot_GAM_API_Pedidos(Empresa, Token)
+print('Última Consulta: ', datetime.now())
