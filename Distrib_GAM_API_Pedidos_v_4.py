@@ -410,12 +410,18 @@ Informamos que os itens abaixo foram adquiridos junto à distribuidora GAM em {D
                 RetornoEmail = email.EnviaEmailSemAnexo(xEmailDestino, xMsgTitulo, CorpoEmail, xEmailOculto)
                 print('Retorno E-mail: ', RetornoEmail)
             ##### NOVO TRECHO
+            log_message = f"[{datetime.now()}] Consulta bem-sucedida!\n"
         else:
-            print('Erro ao fazer ao consultar o pedido (pedido/consultar):', responsePedido.status_code) 
+            print('Erro ao consultar o pedido (pedido/consultar):', responsePedido.status_code)
+            log_message = f"[{datetime.now()}] Erro ao consultar o pedido (pedido/consultar): {str(responsePedido.status_code)}\n"             
 
     else:
-        print('Erro ao fazer ao enviar o pedido (pedido/gerar):', responsePedido.status_code) 
-    
+        print('Erro ao enviar o pedido (pedido/gerar):', responsePedido.status_code) 
+        log_message = f"[{datetime.now()}] Erro ao enviar o pedido (pedido/gerar): {str(responsePedido.status_code)}\n"             
+    # Gravar Log
+    with open("execucoes.log", "a") as log_file:
+        log_file.write(log_message)
+    print(log_message)    
 
 
 
@@ -449,8 +455,12 @@ def GeraTokenGAM():
             token = None
     except Exception as e:
         print('Erro: ', e)
-        print('Data/hora: ', datetime.now(), ' - Erro de conexão com servidor GAM. Aguardando 5 minutos para reconectar...') 
-        #print('Erro de conexão com servidor GAM. Aguardando 5 minutos para reconectar...')
+        print('Data/hora: ', datetime.now(), ' - Erro de conexão com servidor GAM. Aguardando 5 minutos para reconectar...')
+        log_message = f"[{datetime.now()}] Erro de conexão com servidor GAM: {str(e)}\n"
+        # Salvar no arquivo de log
+        with open("execucoes.log", "a") as log_file:
+            log_file.write(log_message)
+        print(log_message)
         time.sleep(300)
         HoraToken = None
         token = None
