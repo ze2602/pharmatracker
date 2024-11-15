@@ -28,10 +28,12 @@ jobs:
         run: python Distrib_GAM_API_Pedidos_v_4.py
 
       - name: Commit e Push do Log
+        if: success()
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add execucoes.log
-          git commit -m "Atualizando log de execução"
+          git add -f execucoes.log
+          git commit -m "Atualizando log de execução" || echo "Nada para commitar"
           git push
         continue-on-error: true
+      
