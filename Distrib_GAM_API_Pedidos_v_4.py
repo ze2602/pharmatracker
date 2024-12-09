@@ -181,10 +181,7 @@ def IniciaBot_GAM_API_Pedidos(CodEmpresa, token):
             # RETIRAR ESSE TEXTO=============================
             if len(itensComprar) > 0:
                 #print('Itens a comprar: ', itensComprar)
-
-
                 GerarPedido(CNPJEmpresa, itensComprar, headers, CodEmpresa, CNPJFormatado, aDescri, aEAN)
-                pass
 
             regs = len(aEAN)
             cont = 0
@@ -268,7 +265,7 @@ def GerarPedido(CNPJCliente, Produtos, headersPedido, CodEmpresa, CNPJFormatado,
         print('Pedido Distr: ', NumPedidoDistr)
         print('    Mensagem: ', msgPedidoDistr)
 
-        if False: #msgPedidoDistr != 'PEDIDO PROCESSADO COM SUCESSO':
+        if msgPedidoDistr != 'PEDIDO PROCESSADO COM SUCESSO':
             print('********************************************************************')
             print('Problemas no envio do pedido:', msgPedidoDistr)
             print('********************************************************************')
@@ -419,6 +416,7 @@ Informamos que os itens abaixo foram adquiridos junto à distribuidora GAM em {D
         print('Erro ao enviar o pedido (pedido/gerar):', responsePedido.status_code) 
         log_message = f"[{datetime.now()}] Erro ao enviar o pedido (pedido/gerar): {str(responsePedido.status_code)}\n"             
     # Gravar Log
+    
     with open("execucoes.log", "a") as log_file:
         log_file.write(log_message)
     print(log_message)    
