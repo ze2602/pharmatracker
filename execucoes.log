@@ -411,3 +411,4 @@
 [2024-12-18 15:15:49.622905] Consulta bem-sucedida!
 [2024-12-18 15:16:18.329303] Consulta bem-sucedida!
 [2025-01-09 15:35:41.937863] Erro de conexão com servidor GAM: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+[2025-01-09 15:54:05.048200] Erro de conexão com servidor GAM: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
