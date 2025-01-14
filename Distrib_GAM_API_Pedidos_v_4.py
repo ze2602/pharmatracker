@@ -523,7 +523,7 @@ def GeraTokenGAM():
 #     break
 
 Token, UltimoToken = GeraTokenGAM()
-for Empresa in range(6):
+for Empresa in range(7):
     if (Empresa >= 2 and Empresa <= 3) or (Empresa == 6):
         IniciaBot_GAM_API_Pedidos(Empresa, Token)
 print('Última Consulta: ', datetime.now())
