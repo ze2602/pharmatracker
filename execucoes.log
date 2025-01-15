@@ -413,3 +413,4 @@
 [2025-01-09 15:35:41.937863] Erro de conexão com servidor GAM: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
 [2025-01-09 15:54:05.048200] Erro de conexão com servidor GAM: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
 [2025-01-11 05:15:01.999280] Erro de conexão com servidor GAM: HTTPConnectionPool(host='apitomcat.gam.com.br', port=8280): Max retries exceeded with url: /ApiPedidos/api/token/gerar (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fdc194e2670>: Failed to establish a new connection: [Errno 110] Connection timed out'))
+[2025-01-15 15:51:51.829724] Consulta bem-sucedida!
