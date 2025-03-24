@@ -442,3 +442,6 @@
 [2025-03-11 08:52:41.244755] Erro de conexão com servidor GAM: HTTPConnectionPool(host='apitomcat.gam.com.br', port=8280): Max retries exceeded with url: /ApiPedidos/api/token/gerar (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f7c733b52e0>: Failed to establish a new connection: [Errno 110] Connection timed out'))
 [2025-03-12 08:51:20.754059] Consulta bem-sucedida!
 [2025-03-12 08:51:47.555570] Consulta bem-sucedida!
+[2025-03-24 17:29:49.536586] Consulta bem-sucedida!
+[2025-03-24 17:31:05.738933] Consulta bem-sucedida!
+[2025-03-24 17:31:38.952136] Consulta bem-sucedida!
